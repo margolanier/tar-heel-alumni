@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Interactive Small Scale UNC JOMC Alumni Slideshow</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+        <script src="tabletop-master/src/tabletop.js"></script>
+    <!-- bxSlider Javascript file -->
+    <script src="js/jquery.bxslider.min.js"></script>
+    <script src="js/plugins/jquery.easing.1.3.js"></script>
+    
+    <link href="css/interactive-style.css" rel="stylesheet" />    
+    <!-- bxSlider CSS file -->
+    <link href="css/jquery.bxslider.css" rel="stylesheet" />
+    
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,400' rel='stylesheet' type='text/css'>
+   
+</head>
+
+<body>
+    
+
+<ul class="bxslider">
+ 
+</ul>
+
+
+<script type="text/javascript">
+    var sliderHTML = ""
+  window.onload = function() { init() };
+
+  //Connecting Google Sheet
+  var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/14UanvI8Rz6TMo2iZsO8zy3jI_lElN1hkO-R_i6CmPnA/pubhtml';
+
+  function init() {
+    Tabletop.init( { key: public_spreadsheet_url,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    //alert("Successfully processed!")
+
+    
+    //Builds captions
+    for (var i=0; i<data.length; i++){
+	sliderHTML += "<li style=\"background-image: url('" + data[i].Image + "')\;\">";
+	sliderHTML += "<div class='name'>" + data[i].Name;
+	sliderHTML += "<div class='year'>" + "Class of " + data[i].Year + "</div>";
+	sliderHTML += "<div class='employer'>" + data[i].Employer + "</div>";
+	sliderHTML += "</div>" + "</li>";
+    
+   
+    
+    $(".bxslider").html(sliderHTML);
+    }
+    
+    createSlider();
+    
+    
+  }
+  
+  
+  function createSlider(){
+    
+    //Slider options
+    $('.bxslider').bxSlider({
+    mode: 'fade',
+    auto:true,
+    pager: false,
+    pause: 10000,
+    controls:true,
+    captions: true
+});
+    
+  }
+  
+
+</script>
+
+
+
+</body>
+</html>

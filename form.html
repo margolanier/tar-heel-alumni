@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script type="text/javascript" src="js/geocoder.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<h2>Fill out this form.</h2>
+		<form>
+		  <div class="form-group">
+		    <label for="inputName">Name</label>
+		    <input type="name" class="form-control" id="inputName" placeholder="What's ya name?">
+		  </div>
+		  <div class="form-inline">
+			  <div class="form-group">
+			    <label for="inputCity">City</label>
+			    <input type="city" class="form-control" id="inputCity" placeholder="Raleigh">
+			  </div>
+			  <div class="form-group">
+			    <label for="inputState">State</label>
+			    <input type="state" class="form-control" id="inputState" placeholder="NC">
+			  </div>
+			</div>
+		  <div class="form-group">
+		    <label for="address">Address</label>
+		    <input type="address" class="form-control" id="address" placeholder="Chapel Hill, NC">
+		  </div>
+		  <div class="form-group">
+		    <label for="inputMajor">Major (undergrad)</label>
+		    <input type="major" class="form-control" id="inputMajor" placeholder="Chemistry">
+		  </div>
+		  <div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radioJob" value="option1" checked>
+			    I got a job.
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radioGrad" value="option2">
+			    I'm going to grad school.
+			  </label>
+			</div>
+			<div class="radio">
+			  <label>
+			    <input type="radio" name="optionsRadios" id="radioOther" value="option2">
+			    Other.
+			  </label>
+			</div>
+		  <div class="form-inline">
+			  <div class="form-group">
+			    <label for="inputCompany">Company</label>
+			    <input type="company" class="form-control" id="inputCompany" placeholder="Company XYZ">
+			  </div>
+			  <div class="form-group">
+			    <label for="inputField">Field</label>
+			    <input type="field" class="form-control" id="inputField" placeholder="Web Development">
+			  </div>
+			</div>
+			<div class="form-group">
+		    <label for="inputContact">Contact</label>
+		    <input type="contact" class="form-control" id="inputContact" placeholder="email">
+		  </div>
+		  <button type="submit" class="btn btn-default" value="Geocode" onclick="codeAddress()">Submit</button>
+		</form>
+	</div>
+</body>
+</html>

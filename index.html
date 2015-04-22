@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Index</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+  <body>
+
+    <p id="data"></p>
+
+    <script type="text/javascript" src="/js/tabletop.js"></script>
+    <script type="text/javascript">
+      window.onload = function() { init() };
+
+      // var dataHTML = "";
+
+      var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1s4aOCaeivhXLctlT5kD-R9_3eY6YjV_ZG9I4oeT65hg/edit#gid=0';
+
+      function init() {
+        Tabletop.init( { key: public_spreadsheet_url,
+                         callback: showInfo,
+                         simpleSheet: true } );
+      }
+
+      function showInfo(data) {
+        // data comes through as a simple array since simpleSheet is turned on
+        document.getElementById("data").innerHTML = JSON.stringify(data);
+        console.log(data);
+      }
+
+      /*
+      // displays prettier data
+      for (var i=0; i<data.length; i++){
+        dataHTML += "<li>Name: <div class='name'>" + data[i].Name + "</div>";
+        dataHTML += "<br>City: <div class='city'>" + data[i].City + "</div></li>";
+
+      document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");
+      */
+    </script>
+
+  </body>
+</html>
