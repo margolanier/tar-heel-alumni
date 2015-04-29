@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Survey</title>
+  <title>Tar Heel Alumni</title>
 
     <!-- begin styles  -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
     <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css" />
@@ -20,33 +19,15 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
     <script type="text/javascript" src="js/tabletop.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-    <script type="text/javascript" src="js/maps-results.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="js/tabletop-feed.js"></script>
+    <script src="js/data-tables-bootstrap.js"></script>
     <!-- end scripts -->
 </head>
 
 <body>
-  <div class="icon-bar four-up medium-vertical large-vertical" role="navigation">
-    <div class="item" href="index.html">
-      <img src="img/rameses.png" id="logo">
-    </div>
-    <a class="item" aria-labelledby="#itemlabel1" href="index.html" title="map">
-      <i class="fa fa-globe"></i>
-      <label id='itemlabel1'>Map</label>
-    </a>
-    <a class="item" aria-labelledby="#itemlabel2" href="survey.html" title="survey">
-      <i class="fa fa-user-plus"></i>
-      <label id='itemlabel2'>Survey</label>
-    </a>
-    <a class="item" aria-labelledby="#itemlabel3" href="datatable.html" title="list">
-    <i class="fa fa-list-ol"></i>
-      <label id='itemlabel3'>List</label>
-    </a>
-  </div>
-
-  <div class="main">
-    <iframe src="actualtable.html" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-  </div>
+<h2>table</h2>
+    <div id="demo"></div>
 
 </body>
 </html>

@@ -1,15 +1,20 @@
 
+@font-face {
+    font-family: 'Aaargh';
+    src: url('fonts/Aaargh.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html, body {
 	margin: 0px;
 	padding: 0px;
+	font-family: 'Aaargh';
+	font-size: 18px;
 }
 
-#map-canvas {
-	height: 100%;
-}
-
-/* leave in for testing pages styles */
+/* leave in styles for testing
+***************************************/
 #panel {
 	position: absolute;
 	top: 5px;
@@ -20,49 +25,70 @@ html, body {
 	padding: 5px;
 	border: 1px solid #999;
 }
+/****************************************
+end panel */
 
-#logo {
-	position: absolute;
-	width: 100px;
-	top: 15px;
-	left: 10px;
-	z-index: 12;
+
+/* begin navigation
+***************************************/
+.icon-bar {
+	background: #56a0d3;
+	margin-top: 0;
 }
 
 @media screen and (min-width: 642px) {
-	h2, table {
-		margin-left: 120px;
+	.icon-bar {
+		float: left;
+		width: 89px;
 	}
 }
 
 @media screen and (max-width: 641px) {
-	#logo{
-		width: 
-	}
 	.icon-bar {
-		margin-top: -3px;
+		background: #56a0d3;
+		width: 100%;
+		height: auto;
 	}
-	#logo {
-		width: 65px;
-		top: 18px;
-		left: 20px;
+	.item > label {
+		display: none;
 	}
-
 }
+/****************************************
+end navigation */
 
-.icon-bar {
-	background: #56a0d3;
-}
 
-.icon-bar.medium-vertical, .icon-bar.large-vertical {
-	float: left;
+/* begin misc
+***************************************/
+#map-canvas {
+	height: 100%;
+	z-index: 10;
 }
 
 .main {
-	display: inline;
+	height: 100%;
+	margin-left: 90px;
+	margin-right: -100px;
 }
 
+@media screen and (max-width: 641px) {
+	.main {
+		margin-left: 0;
+	}
+}
 
+a:hover, a:focus, a:active {
+	text-decoration: none;
+}
+
+.item:hover{
+	background: red;
+}
+/****************************************
+end misc */
+
+#demo {
+	margin: 10px;
+}
 
 
 

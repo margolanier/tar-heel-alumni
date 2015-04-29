@@ -28,10 +28,9 @@ function createTableColumns(){
     var tableColumns =   [
 		{'mDataProp': 'name', 'sTitle': 'Name', 'sClass': 'left'},
 		{'mDataProp': 'citystate', 'sTitle': 'Location', 'sClass': 'left'},
-		{'mDataProp': 'major', 'sTitle': 'Undergrad Major', 'sClass': 'left'},
         {'mDataProp': 'plans', 'sTitle': 'Plans', 'sClass': 'left'},
         {'mDataProp': 'companyorschool', 'sTitle': 'Company or School', 'sClass': 'left'},
-        {'mDataProp': 'careerfieldordegree', 'sTitle': 'Career Field or Degree', 'sClass': 'left'},
+        {'mDataProp': 'careerfieldordegree', 'sTitle': 'Career Field<br>or Degree', 'sClass': 'left'},
         {'mDataProp': 'contact', 'sTitle': 'Contact', 'sClass': 'left'}
 	];
     return tableColumns;

@@ -1,0 +1,44 @@
+.icon-bar.four-up.large-vertical .item {
+    width: auto;
+}
+.icon-bar.large-vertical .item {
+    margin: auto;
+    float: none;
+}
+.icon-bar > * {
+    font-size: 1rem;
+    padding: 1.25rem;
+}
+.icon-bar > * {
+    text-align: center;
+}
+.icon-bar.four-up .item {
+    width: 25%;
+}
+.icon-bar > a:hover {
+    background: none repeat scroll 0% 0% #008CBA;
+}
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+a:hover {
+    color: #005580;
+}
+a:hover, a:active {
+    outline: 0px none;
+}
+a:hover {
+    cursor: pointer;
+}
+a:focus, a:hover {
+    color: #23527C;
+    text-decoration: underline;
+}
+.icon-bar > * {
+    font-size: 1rem;
+    padding: 1.25rem;
+}
+.icon-bar > * {
+    text-align: center;
+    margin: 0px auto;
+    display: block;
