@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table & Geocode</title>
+
+  <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+  <link rel="stylesheet" href="css/open-iconic-foundation.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="text/javascript" src="http://cdn.foundation5.zurb.com/foundation.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="js/tabletop.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+  <script type="text/javascript" src="js/maps-results.js"></script>
+  <!-- <script type="text/javascript" src="js/mapStyles.js"></script> -->
+</head>
+
+<body>
+  <div class="icon-bar four-up medium-vertical large-vertical" role="navigation">
+    <a class="item" aria-labelledby="#itemlabel1" href="index.html" title="map">
+      <img src="css/svg/globe.svg" alt="globe">
+      <label id='itemlabel1'>Map</label>
+    </a>
+    <a class="item" aria-labelledby="#itemlabel2" href="survey.html" title="survey">
+      <img src="css/svg/spreadsheet.svg" alt="spreadsheet">
+      <label id='itemlabel2'>Survey</label>
+    </a>
+    <a class="item" aria-labelledby="#itemlabel3" href="list.html" title="list">
+       <img src="css/svg/sort-ascending.svg" alt="sort-ascending">
+      <label id='itemlabel3'>List</label>
+    </a>
+    <a class="item" aria-labelledby="#itemlabel4" href="about.html" title="about">
+      <img src="css/svg/info.svg" alt="info">
+      <label id='itemlabel4'>About</label>
+    </a>
+  </div>
+
+  <div class="row main">
+    <h2>Human-Readable Column Names (default)</h2>
+    <table id="pretty">
+    </table>
+
+    <h2>Google-Readable Column Names (legacy)</h2>
+    <table id="original">
+    </table>
+  </div><!-- main -->
+
+  <script type="text/javascript">
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html';
+    var tabletop;
+    
+    $(document).ready( function() {
+      
+      /*
+        Draw two tables, one using 
+          prettyColumnNames: true (default)
+        and the other one 
+          prettyColumnNames: false (the old default)
+      */
+      
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: drawTable } );
+                       
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: drawTable,
+                       prettyColumnNames: false } );
+    })
+
+    function drawTable(sheets, tabletop) {
+      var sheet = sheets['Responses'],
+          column_names = sheet.column_names;
+      
+      if(tabletop.prettyColumnNames)
+        var table = $("#pretty");
+      else
+        var table = $("#original");
+      
+      
+      var header = $("<thead></thead>");
+      for(var i = 1; i < column_names.length; i++) {
+        $("<th></th>").text(column_names[i]).appendTo(header);
+      }
+      table.append(header);
+      
+      // starts at 1 to not display timestamp in first column
+      var tbody = $("<tbody></tbody>");
+      for(var i = 1; i < sheet.elements.length; i++) {
+        var row = sheet.elements[i];
+        var html_row = $("<tr></tr>");
+        for(var j = 1; j < column_names.length; j++) {
+          var column_name = column_names[j];
+          // console.log(row);
+          // console.log(row.citystate);
+          $("<td></td>").text(row[column_name]).appendTo(html_row);
+        }
+        tbody.append(html_row);
+      }
+      table.append(tbody);
+    }
+
+    // document.write("<p>The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a></p>"); 
+  </script>
+
+</body>
+</html>

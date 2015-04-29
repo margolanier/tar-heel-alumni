@@ -1,0 +1,64 @@
+
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+}
+
+#map-canvas {
+	height: 100%;
+}
+
+#panel {
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -180px;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+}
+
+#site-title {
+	color: white;
+	font-size: 25px;
+}
+
+@media screen and (max-width: 641px) {
+	#header {
+		top: 100px;
+	}
+}
+
+.icon-bar {
+	background: #56a0d3;
+}
+
+.icon-bar.medium-vertical, .icon-bar.large-vertical {
+	float: left;
+}
+
+.icon-bar a:hover {
+	color: red;
+}
+
+.main {
+	display: inline;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+.thumb-icon {
+	width: 64px;
+	height: 64px;
+	display: block;
+	margin: 25px auto;
+}
+
+
+

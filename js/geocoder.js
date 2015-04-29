@@ -19,6 +19,7 @@ function codeAddress() {
           map: map,
           position: results[0].geometry.location
       });
+      console.log(results[0].formatted_address);
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
