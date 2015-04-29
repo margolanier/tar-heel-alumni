@@ -3,7 +3,7 @@ var jqueryNoConflict = jQuery;
 // begin main function
 jqueryNoConflict(document).ready(function(){
 
-    initializeTabletopObject('https://docs.google.com/spreadsheets/d/0An8W63YKWOsxdHlyTVAzQ1RPSGhxZDM5T3NqdU9RcHc/pubhtml');
+    initializeTabletopObject('https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html');
 
 });
 
@@ -26,9 +26,13 @@ function createTableColumns(){
     is what happens with the More Info column header */
 
     var tableColumns =   [
-		{'mDataProp': 'brewery', 'sTitle': 'Brewery', 'sClass': 'center'},
-		{'mDataProp': 'city', 'sTitle': 'City', 'sClass': 'center'},
-		{'mDataProp': 'website', 'sTitle': 'Website', 'sClass': 'center'}
+		{'mDataProp': 'name', 'sTitle': 'Name', 'sClass': 'left'},
+		{'mDataProp': 'citystate', 'sTitle': 'Location', 'sClass': 'left'},
+		{'mDataProp': 'major', 'sTitle': 'Undergrad Major', 'sClass': 'left'},
+        {'mDataProp': 'plans', 'sTitle': 'Plans', 'sClass': 'left'},
+        {'mDataProp': 'companyorschool', 'sTitle': 'Company or School', 'sClass': 'left'},
+        {'mDataProp': 'careerfieldordegree', 'sTitle': 'Career Field or Degree', 'sClass': 'left'},
+        {'mDataProp': 'contact', 'sTitle': 'Contact', 'sClass': 'left'}
 	];
     return tableColumns;
 }

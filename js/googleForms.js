@@ -1,3 +1,5 @@
+/* This is used in google form, but not referenced in app */
+
 /**
  * A special function that inserts a custom menu when the spreadsheet opens.
  */
