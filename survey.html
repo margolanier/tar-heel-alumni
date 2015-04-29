@@ -10,10 +10,10 @@
 
   <script type="text/javascript" src="http://cdn.foundation5.zurb.com/foundation.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-  <script type="text/javascript" src="js/svg-injector.min.js"></script>
   <script type="text/javascript" src="js/tabletop.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
   <script type="text/javascript" src="js/maps-results.js"></script>
+  <!-- <script type="text/javascript" src="js/mapStyles.js"></script> -->
 </head>
 
 <body>
@@ -37,7 +37,36 @@
 
   <img src="img/rameses.png" id="logo">
 
-  <div id="map-canvas"></div>
+  <div class="main">
+  <iframe src="https://docs.google.com/forms/d/13RizUHWMMoG-U56Jmho-8GIgsa0OowtR4JT_5h8cV3c/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+  </div>
+    
+  </div>
+
+  <!-- The published spreadsheet is located at https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html -->
+
+  <script type="text/javascript">
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html';
+    var tabletop;
+    
+    $(document).ready( function() {
+      
+      /*
+        Draw two tables, one using 
+          prettyColumnNames: true (default)
+        and the other one 
+          prettyColumnNames: false (the old default)
+      */
+      
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: drawTable } );
+                       
+      Tabletop.init( { key: public_spreadsheet_url,
+                       callback: drawTable,
+                       prettyColumnNames: false } );
+    })
+
+  </script>
 
 </body>
 </html>

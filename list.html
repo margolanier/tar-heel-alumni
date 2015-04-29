@@ -4,7 +4,7 @@
   <title>Table & Geocode</title>
 
   <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
-  <link rel="stylesheet" href="css/open-iconic-foundation.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://cdn.foundation5.zurb.com/foundation.css">
   <link rel="stylesheet" href="css/styles.css">
 
@@ -13,37 +13,34 @@
   <script type="text/javascript" src="js/tabletop.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
   <script type="text/javascript" src="js/maps-results.js"></script>
-  <!-- <script type="text/javascript" src="js/mapStyles.js"></script> -->
 </head>
 
 <body>
   <div class="icon-bar four-up medium-vertical large-vertical" role="navigation">
+    <div class="item" aria-labelledby="#itemlabel4" href="about.html" title="about">
+      <p>&nbsp;</p>
+    </div>
     <a class="item" aria-labelledby="#itemlabel1" href="index.html" title="map">
-      <img src="css/svg/globe.svg" alt="globe">
+      <i class="fa fa-globe"></i>
       <label id='itemlabel1'>Map</label>
     </a>
     <a class="item" aria-labelledby="#itemlabel2" href="survey.html" title="survey">
-      <img src="css/svg/spreadsheet.svg" alt="spreadsheet">
+      <i class="fa fa-user-plus"></i>
       <label id='itemlabel2'>Survey</label>
     </a>
     <a class="item" aria-labelledby="#itemlabel3" href="list.html" title="list">
-       <img src="css/svg/sort-ascending.svg" alt="sort-ascending">
+    <i class="fa fa-list-ol"></i>
       <label id='itemlabel3'>List</label>
-    </a>
-    <a class="item" aria-labelledby="#itemlabel4" href="about.html" title="about">
-      <img src="css/svg/info.svg" alt="info">
-      <label id='itemlabel4'>About</label>
     </a>
   </div>
 
+  <img src="img/rameses.png" id="logo">
+
   <div class="row main">
-    <h2>Human-Readable Column Names (default)</h2>
+    <h2>Tar Heel Alumni</h2>
     <table id="pretty">
     </table>
 
-    <h2>Google-Readable Column Names (legacy)</h2>
-    <table id="original">
-    </table>
   </div><!-- main -->
 
   <script type="text/javascript">
@@ -83,11 +80,11 @@
       }
       table.append(header);
       
-      // starts at 1 to not display timestamp in first column
       var tbody = $("<tbody></tbody>");
-      for(var i = 1; i < sheet.elements.length; i++) {
+      for(var i = 0; i < sheet.elements.length; i++) {
         var row = sheet.elements[i];
         var html_row = $("<tr></tr>");
+        // starts at 1 to not display timestamp in first column
         for(var j = 1; j < column_names.length; j++) {
           var column_name = column_names[j];
           // console.log(row);

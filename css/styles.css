@@ -9,6 +9,7 @@ html, body {
 	height: 100%;
 }
 
+/* leave in for testing pages styles */
 #panel {
 	position: absolute;
 	top: 5px;
@@ -20,15 +21,33 @@ html, body {
 	border: 1px solid #999;
 }
 
-#site-title {
-	color: white;
-	font-size: 25px;
+#logo {
+	position: absolute;
+	width: 100px;
+	top: 15px;
+	left: 10px;
+	z-index: 12;
+}
+
+@media screen and (min-width: 642px) {
+	h2, table {
+		margin-left: 120px;
+	}
 }
 
 @media screen and (max-width: 641px) {
-	#header {
-		top: 100px;
+	#logo{
+		width: 
 	}
+	.icon-bar {
+		margin-top: -3px;
+	}
+	#logo {
+		width: 65px;
+		top: 18px;
+		left: 20px;
+	}
+
 }
 
 .icon-bar {
@@ -39,26 +58,11 @@ html, body {
 	float: left;
 }
 
-.icon-bar a:hover {
-	color: red;
-}
-
 .main {
 	display: inline;
 }
 
-.icon {
-  width: 16px;
-  height: 16px;
-  fill: white;
-}
 
-.thumb-icon {
-	width: 64px;
-	height: 64px;
-	display: block;
-	margin: 25px auto;
-}
 
 
 
