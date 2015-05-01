@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Save Data into Array</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="js/tabletop.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <h3>Table Info</h3>
+  <div id="table_info"></div>
+  
+  <h3>Responses:</h3>
+  <ul id="responses"></ul>
+
+  <script type="text/javascript">
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html';
+
+    $(document).ready( function() {
+      Tabletop.init( { key: '0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c',
+                       callback: showInfo,
+                       wanted: [ 'Responses' ],
+                       debug: true } )
+    })
+      
+    function showInfo(data, tabletop) {
+
+      // name of sheet
+      $("#table_info").text("We found the table " + tabletop.model_names.join(", "));
+
+      // names of elements/column names
+      $.each( tabletop.sheets(), function(i, sheet) {
+        $("#table_info").append("<p>" + sheet.name + " has " + sheet.column_names.join(", ") + "</p>");
+      });
+
+      // logs each element
+      $.each( tabletop.sheets("Responses").all(), function(i, entry) {
+        var entry_li = $('<li><h4>' + entry.name + '</h4></li>')
+        entry_li.append(entry.citystate);
+        console.log(entry.citystate);
+        entry_li.append(entry.plans);
+        entry_li.appendTo("#responses");
+      })
+      
+    }
+
+    document.write("The published spreadsheet is located at <a target='_new' href='" + public_spreadsheet_url + "'>" + public_spreadsheet_url + "</a>");    
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+
+var geocoder;
+var map;
+var addresses = [];
+var info = [];
+
+function initialize() {
+  var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?key=0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c&output=html';
+  $(document).ready( function() {
+    Tabletop.init( { key: '0AuSm4qaFIJGKdEY3NXhsbXE1ci1FaXRZb0pfRWJLQ2c',
+                     callback: code_addresses,
+                     wanted: [ 'Responses' ],
+                     debug: true } )
+  })
+
+}
+
+
+function code_addresses(data, tabletop) {
+ 
+geocoder = new google.maps.Geocoder();
+  var latlng = new google.maps.LatLng(35.903928, -79.046243);
+  var mapOptions = {
+    zoom: 7,
+    center: latlng,
+    styles: [{"stylers":[{"saturation":-100},{"gamma":1}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"on"},{"saturation":50},{"gamma":0},{"hue":"#56a0d3"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#333333"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"weight":0.5},{"color":"#333333"}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"gamma":1},{"saturation":70}]}]
+  }
+  
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+ 
+
+  $.each( tabletop.sheets("Responses").all(), function(i, entry) {
+    addresses.push(entry.citystate);
+    info.push(entry.name);
+  })
+
+
+  for(var i=0; i < addresses.length; i++) {
+      console.log('inside "code_addresses" for loop')
+      codeAddress(addresses[i], info[i]);
+  }
+}
+
+function codeAddress(address, info) {
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+
+      var contentString = '<div id="iw-container">' +
+        '<div class="iw-title">' + info + '</div>' +
+        '<div class="iw-content"><p>' + 'city, state' + '</p></div>' +
+        '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+          icon: '../img/marker.png'
+      });
+      console.log(results[0].formatted_address);
+
+      google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+      });
+
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
