@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Google Forms</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div>
+            <strong>Test Google Form</strong>
+        </div>
+        <form id="form" target="_self" onsubmit="" action="">
+            <fieldset>
+                <label>Question 1</label>
+                <input id="qs1_op_1" type="radio" value="Yes" name="qs1">
+                <input id="qs1_op_2" type="radio" value="No" name="qs1">
+            </fieldset>
+            <fieldset>
+                <label>Question 2</label>
+                <input id="qs2_op_1" type="radio" value="Yes" name="qs2">
+                <input id="qs2_op_2" type="radio" value="No" name="qs2">
+            </fieldset>
+            <fieldset>
+                <label>Text</label>
+                <textarea id="feed" name="feed"></textarea>
+            </fieldset>
+            <div style="width: 100%; display: block; float: right;">
+                <button id="send" type="submit">
+                    Send
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        };
+        function postContactToGoogle(){
+            var name = $j('#name').val();
+            var email = $j('#email').val();
+            var feed = $j('#feed').val();
+            if ((name !== "") && (email !== "") && ((feed !== "") && (validateEmail(email)))) {
+                $j.ajax({
+                    url: "https://docs.google.com/https://docs.google.com/spreadsheet/ccc?key=0AuSm4qaFIJGKdDdfNXNkczNaa1BNclRwdzlGUy00d1E#gid=2/formResponse",
+                    data: {"entry.1" : name, "entry.3" : email, "entry.4": feed},
+                    type: "POST",
+                    dataType: "xml",
+                    statusCode: {
+                        0: function (){
+     
+                            $j('#name').val("");
+                            $j('#email').val("");
+                            $j('#feed').val("");
+                            //Success message
+                        },
+                        200: function (){
+                            $j('#name').val("");
+                            $j('#email').val("");
+                            $j('#feed').val("");
+                            //Success Message
+                        }
+                    }
+                });
+            }
+            else {
+                //Error message
+            }
+        }
+    </script>
+</body>
+</html>

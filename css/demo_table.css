@@ -377,9 +377,11 @@ tr.odd td.sorting_3 {
 	background-color: #E0E2FF;
 }
 
+/*
 tr.even td.sorting_1 {
 	background-color: #EAEBFF;
 }
+*/
 
 tr.even td.sorting_2 {
 	background-color: #F2F3FF;

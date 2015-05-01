@@ -26,7 +26,7 @@ function code_addresses() {
     'Lincolnton, NC',
     'Raleigh, NC'
   ];
-  
+
   for(var i=0; i < addresses.length; i++) {
       console.log('inside for loop')
       codeAddress(addresses[i]);
@@ -38,7 +38,10 @@ function codeAddress(address) {
     if (status == google.maps.GeocoderStatus.OK) {
       map.setCenter(results[0].geometry.location);
 
-      var contentString = 'It works!';
+      var contentString = '<div id="iw-container">' +
+        '<div class="iw-title">' + 'name' + '</div>' +
+        '<div class="iw-content"><p>' + 'city, state' + '</p></div>' +
+        '</div>';
 
       var infowindow = new google.maps.InfoWindow({
         content: contentString
