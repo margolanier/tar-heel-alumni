@@ -75,8 +75,8 @@ end panel */
 	.icon-bar {
 		margin-bottom: -4px;
 	}
-	.icon-bar > * {
-	  padding: 20px 15px;
+	.icon-bar > .logoDiv {
+	  padding: 5px;
 	}
 }
 
