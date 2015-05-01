@@ -53,6 +53,33 @@ end panel */
 		display: none;
 	}
 }
+
+.icon-bar > * {
+  padding: 15px;
+}
+
+.icon-bar > .logoDiv {
+  padding: 10px;
+}
+
+#logo {
+	width: 90px;
+	height: 80px;
+}
+
+@media screen and (max-width: 641px) {
+	#logo {
+		width: 70px;
+		height: 55px;
+	}
+	.icon-bar {
+		margin-bottom: -4px;
+	}
+	.icon-bar > * {
+	  padding: 20px 15px;
+	}
+}
+
 /****************************************
 end navigation */
 

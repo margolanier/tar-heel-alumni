@@ -13,17 +13,20 @@ function initialize() {
   
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  console.log('before code_addresses');
+  console.log('inside initialize function');
   code_addresses();
 
 }
 
 function code_addresses() {
+
+  // make variable global so I can use info window in function below?
   var addresses = [
     'Chapel Hill, NC',
     'Lincolnton, NC',
     'Raleigh, NC'
   ];
+  
   for(var i=0; i < addresses.length; i++) {
       console.log('inside for loop')
       codeAddress(addresses[i]);
