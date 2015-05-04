@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test Google Forms</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    </head>
+
+<body>
+
+<div id="form" class="contact-us-form">
+    <div class="title">
+        <strong>Have any questions?</strong>
+    </div>
+    <div class="subtitle">
+        <strong>Drop us a line</strong>
+    </div>
+    <form id="callus" target="_self" onsubmit="" action="javascript: postToGoogle()">
+        <fieldset>
+            <label for="name">What's your name? *</label>
+            <input id="name" type="text" name="name">
+        </fieldset>
+        <fieldset>
+            <label for="email">What's your email? *</label>
+            <input id="email" type="text" name="email">
+        </fieldset>
+        <fieldset>
+            <label for="feed">Questions or Feedback?*</label>
+            <textarea id="feed" name="feed"></textarea>
+        </fieldset>
+        <div style="text-align: right; padding-bottom: 15px;">* Required</div>
+        <div style="width: 100%; display: block; float: right;">
+            <button id="send" type="submit">
+                Contact Us
+            </button>
+        </div>
+        <div style="width: 100%; display: block; float: right; padding-top: 15px;">
+            <div class="requestSubmited" style="display:none; text-align: center;">Your request has been sent!</div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    function validateEmail(email) {
+        var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function postToGoogle(){
+        var name = $('#name').val();
+        var email = $('#email').val();
+        var feed = $('#feed').val();
+        if ((name !== "") && (email !== "") && ((feed !== "") && (validateEmail(email)))) {
+            $.ajax({
+                url: 'https://docs.google.com/forms/d/docs.google.com/spreadsheets/d/1JoLGiOh9MVBgfxHPKzYRa1_qC9uQjQDwQ9ItjI7quHI/formResponse',
+                data: {
+                    "entry.1994830155" : name,
+                    "entry.958917645" : email,
+                    "entry.472696849" : feed
+                },
+                method: "POST",
+                dataType: "jsonp",
+                statusCode: {
+                    0: function (){
+ 
+                        $('#name').val("");
+                        $('#email').val("");
+                        $('#feed').val("");
+                        //window.location.replace("thankyou.html");
+                    },
+                    200: function (){
+                        $('#name').val("");
+                        $('#email').val("");
+                        $('#feed').val("");
+                        //window.location.replace("thankyou.html");
+                    }
+                }
+            });
+        }
+        else {
+            //Error message
+        }
+    }
+
+    $(document).ready(function(){
+        $('#form').submit(function() {
+            postToGoogle();
+            return false;
+        });
+    });
+
+</script>
+
+</body>
+</html>
+

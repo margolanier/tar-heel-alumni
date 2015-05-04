@@ -11,6 +11,7 @@ html, body {
 	padding: 0px;
 	font-family: 'Aaargh';
 	font-size: 18px;
+	overflow-x: hidden;
 }
 
 /* leave in styles for testing
@@ -34,6 +35,13 @@ end panel */
 .icon-bar {
 	background: #56a0d3;
 	margin-top: 0;
+	z-index: 50px;
+}
+
+@media screen and (min-width: 642px) {
+	.fixed {
+		position: fixed;
+	}
 }
 
 @media screen and (min-width: 642px) {
@@ -106,6 +114,7 @@ end navigation */
 #iw-container p {
 	color: #333;
 	font-size: 16px;
+	line-height: 22px;
 }
 
 #iw-container  .iw-title {
@@ -138,29 +147,23 @@ end map */
 /* begin misc
 ***************************************/
 
-
 .main {
 	height: 100%;
-	margin-left: 90px;
-	margin-right: -100px;
+	margin-left: 120px;
+	margin-right: 10px;
 }
 
 @media screen and (max-width: 641px) {
 	.main {
 		margin-left: 0;
+		margin-right: 0;
+		padding: 10px;
 	}
 }
 
 a:hover, a:focus, a:active {
 	text-decoration: none;
 }
-
-
-
-/****************************************
-end misc */
-
-
 
 .table-striped tbody>tr:nth-child(odd)>td, .table-striped tbody>tr:nth-child(odd)>th {
   background-color: #f9f9f9;
@@ -176,4 +179,60 @@ td {
   padding-top: 25px;
   color: #999;
 }
+
+.datatable-iframe {
+	width: 100%;
+	height: 100%;
+}
+
+/****************************************
+end misc */
+
+
+
+/* begin google ss
+***************************************/
+.required-message {
+	display: none;
+}
+
+select {
+	width: 270px;
+	height: 40px
+}
+
+#main > .ss-form-container {
+	padding: 10px;
+}
+
+@media screen and (min-width: 642px) {
+	#main > .ss-form-container {
+		margin-left: 120px;
+	}
+}
+
+.form-title {
+	font-weight: bold;
+	color: black;
+}
+
+.ss-q-item-label {
+	display: block;
+}
+
+.ss-form-entry {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+#ss-submit {
+	font-weight: bold;
+	line-height: 30px;
+}
+
+/****************************************
+end google ss */
+
+
+
 
