@@ -65,7 +65,7 @@ function codeAddress(address, person, info, contact) {
       var marker = new google.maps.Marker({
           map: map,
           position: results[0].geometry.location,
-          icon: '../img/marker.png'
+          icon: 'http://margolanier.com/tarheelgrads/img/marker.png'
       });
       console.log(results[0].formatted_address);
 
